@@ -1,4 +1,4 @@
-package com.tiendat.tiendat;
+package com.tiendat;
 
 import java.util.Locale;
 import org.springframework.context.MessageSource;
