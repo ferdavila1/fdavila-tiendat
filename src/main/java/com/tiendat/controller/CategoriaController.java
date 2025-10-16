@@ -1,5 +1,5 @@
 package com.tiendat.controller;
-
+ 
 import com.tiendat.domain.Categoria;
 import com.tiendat.service.CategoriaService;
 import jakarta.validation.Valid;
@@ -16,11 +16,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
+ 
 @Controller
 @RequestMapping("/categoria")
 public class CategoriaController {
-
+ 
     @Autowired
     private CategoriaService categoriaService;
 
