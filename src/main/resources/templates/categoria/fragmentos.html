@@ -11,7 +11,7 @@
             <div class='row py-4 mb-2 bg-light'>
                 <div class='col-md-1'></div>
                 <div class='col-md-3'>
-                    <button type="button" class="btn btn-primary"
+                    <button type="button" class="btn btn-primary"  sec:authorize="hasRole('ROLE_ADMIN')"
                             data-bs-toggle="modal" data-bs-target="#agregarCategoriaModal">
                         <i class="fa-solid fa-plus"></i> [[#{categoria.agregar}]]</button>
                 </div>
@@ -62,30 +62,33 @@
                         <div class="card-body">
                             <div th:if="${categorias != null and !categorias.empty}">
                                 <table class="table table-striped table-hover">
-                                    <thead><tr><th>#</th>
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
                                             <th>[[#{categoria.descripcion}]]</th>
                                             <th>[[#{categoria.imagen}]]</th>
                                             <th>[[#{categoria.activo}]]</th>
-                                            <th></th></tr></thead>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
                                     <tbody>
                                         <tr th:each="c : ${categorias}">
                                             <td>[[${c.idCategoria}]]</td>
                                             <td>[[${c.descripcion}]]</td>
                                             <td><img th:src="@{${c.rutaImagen}}" alt="noData" height="75"/></td>
                                             <td th:text="${c.activo} ? 'Activa':'Inactiva'"></td>
-                                            <td><div class="d-flex align-items-start">                                                    
-                                                    <button type="button" class="btn btn-danger"
-                                                            data-bs-toggle="modal" data-bs-target="#confirmModal"
-                                                            th:data-bs-id="${c.idCategoria}"
-                                                            th:data-bs-descripcion="${c.descripcion}">
-                                                        <i class="fa-solid fa-trash"></i> [[#{accion.eliminar}]]</button>
-                                                    <form th:action="@{/categoria/modificar}" th:object="${categoria}"
-                                                          method="post">
-                                                        <input type="hidden" name="idCategoria" th:value="${c.idCategoria}"/>
-                                                        <button type="submit" class="btn btn-success">
-                                                            <i class="fa-solid fa-pencil"></i> [[#{accion.actualizar}]]</button>
-                                                    </form>
-                                                </div></td></tr>
+                                            <td>
+                                                <button type="button" class="btn btn-danger"
+                                                        data-bs-toggle="modal" data-bs-target="#confirmModal"
+                                                        th:data-bs-id="${c.idCategoria}"
+                                                        th:data-bs-descripcion="${c.descripcion}">
+                                                    <i class="fa-solid fa-trash"></i> [[#{accion.eliminar}]]
+                                                </button>                                           
+                                                <a th:href="@{/categoria/modificar/}+${c.idCategoria}" class="btn btn-warning">
+                                                    <i class="fas fa-pencil-alt"></i> [[#{accion.actualizar}]]
+                                                </a>                                                
+                                            </td>
+                                        </tr>
                                     </tbody>
                                 </table></div>
                             <div class="text-center p-2" th:if="${categorias == null or categorias.empty}">
