@@ -34,10 +34,10 @@ public class Categoria implements Serializable {
     @Column(name = "fecha_modificacion", insertable = false, updatable = false)
     private LocalDateTime fechaModificacion;
  
-//    @OneToMany
-//    @JoinColumn(name = "id_categoria", updatable = false, insertable = false)
-//    private List<Producto> productos;
-//    
+      @OneToMany
+      @JoinColumn(name = "id_categoria", updatable = false, insertable = false)
+      private List<Categoria> categorias;
+    
     public Categoria() {
  
     }
