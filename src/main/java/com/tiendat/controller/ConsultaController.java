@@ -60,4 +60,14 @@ public class ConsultaController {
         model.addAttribute("precioSup", precioSup);
         return "/consultas/listado";
     }
+    
+    
+    @GetMapping("/productosCaros")
+    public String productosCaros(Model model) {
+        var lista = productoService.productosCaros(10000);
+        model.addAttribute("productos", lista);
+        return "/consultas/listado";
+    }
+
+
 }
