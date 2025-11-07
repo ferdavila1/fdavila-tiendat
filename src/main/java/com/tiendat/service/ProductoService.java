@@ -80,10 +80,13 @@ public class ProductoService {
         return productoRepository.consultaSQL(precioInf, precioSup);
     }
     
+    
     @Transactional(readOnly = true)
-    public List<Producto> productosCaros(double precio) {
-       return productoRepository.productosCaros(precio);
-    }
+    public List<Producto> productosCaros(double precioInf, double precioSup) {
+        return productoRepository.productosCaros(precioInf, precioSup);
+}
+
+
 
 
 }

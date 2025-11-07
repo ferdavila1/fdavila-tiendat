@@ -8,24 +8,24 @@ import org.springframework.data.repository.query.Param;
 
 public interface ProductoRepository extends JpaRepository<Producto, Integer> {
 
+    // Productos activos
     public List<Producto> findByActivoTrue();
     
-    //Ejemplo de método utilizando consultas derivadas
+    // Consulta derivada
     public List<Producto> findByPrecioBetweenOrderByPrecioAsc(double precioInf, double precioSup);
 
-    //Ejemplo de método utilizando consultas JPQL
-    @Query(value = "SELECT p FROM Producto p WHERE p.precio BETWEEN :precioInf AND :precioSup ORDER BY p.precio ASC")
+    // Consulta JPQL
+    @Query("SELECT p FROM Producto p WHERE p.precio BETWEEN :precioInf AND :precioSup ORDER BY p.precio ASC")
     public List<Producto> consultaJPQL(@Param("precioInf") double precioInf, @Param("precioSup") double precioSup);
 
-    //Ejemplo de método utilizando consultas SQL nativas
-    @Query(nativeQuery = true,
-            value = "SELECT * FROM producto p WHERE p.precio BETWEEN :precioInf AND :precioSup ORDER BY p.precio ASC")
+    // Consulta SQL nativa
+    @Query(
+        nativeQuery = true,
+        value = "SELECT * FROM producto p WHERE p.precio BETWEEN :precioInf AND :precioSup ORDER BY p.precio ASC"
+    )
     public List<Producto> consultaSQL(@Param("precioInf") double precioInf, @Param("precioSup") double precioSup);
-    
-    
-    // En tu Repositorio
-    @Query("SELECT p FROM Producto p WHERE p.precio > :precio")
-    List<Producto> productosCaros(@Param("precio") double precio);
 
+    @Query("SELECT p FROM Producto p WHERE p.precio BETWEEN :precioInf AND :precioSup ORDER BY p.precio DESC")
+    public List<Producto> productosCaros(@Param("precioInf") double precioInf,@Param("precioSup") double precioSup);
 
 }

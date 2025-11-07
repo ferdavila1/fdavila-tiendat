@@ -31,6 +31,9 @@ public class ConsultaController {
         return "/consultas/listado";
     }
     
+    
+    
+    
     @PostMapping("/consultaDerivada")
     public String consultaDerivada(@RequestParam() double precioInf,
             @RequestParam() double precioSup, Model model) {
@@ -62,12 +65,17 @@ public class ConsultaController {
     }
     
     
-    @GetMapping("/productosCaros")
-    public String productosCaros(Model model) {
-        var lista = productoService.productosCaros(10000);
+    @PostMapping("/productosCaros")
+    public String productosCaros(@RequestParam() double precioInf,
+            @RequestParam() double precioSup, Model model) {
+        var lista = productoService.productosCaros(precioInf, precioSup);
         model.addAttribute("productos", lista);
+        model.addAttribute("precioInf", precioInf);
+        model.addAttribute("precioSup", precioSup);
         return "/consultas/listado";
     }
+
+
 
 
 }
