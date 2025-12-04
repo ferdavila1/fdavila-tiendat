@@ -1,9 +1,9 @@
-package com.tienda.service;
+package com.tiendat.service;
 
-import com.tienda.domain.Rol;
-import com.tienda.domain.Usuario;
-import com.tienda.repository.RolRepository;
-import com.tienda.repository.UsuarioRepository;
+import com.tiendat.domain.Rol;
+import com.tiendat.domain.Usuario;
+import com.tiendat.repository.RolRepository;
+import com.tiendat.repository.UsuarioRepository;
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;

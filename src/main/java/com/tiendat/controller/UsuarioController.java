@@ -1,7 +1,7 @@
-package com.tienda.controller;
+package com.tiendat.controller;
 
-import com.tienda.domain.Usuario;
-import com.tienda.service.UsuarioService;
+import com.tiendat.domain.Usuario;
+import com.tiendat.service.UsuarioService;
 import jakarta.validation.Valid;
 import java.util.Locale;
 import java.util.Optional;

@@ -1,6 +1,6 @@
-package com.tienda.repository;
+package com.tiendat.repository;
 
-import com.tienda.domain.Ruta;
+import com.tiendat.domain.Ruta;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
